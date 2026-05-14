@@ -15,7 +15,7 @@ jobs:
 
       - name: Download file
         run: |
-          curl -L "https://takeout-download.usercontent.google.com/download/takeout-20260511T200120Z-3-001.zip?j=8ebe3836-7b53-4e23-b77c-6c2c7935d850&i=0&user=578995869144&authuser=0" -o takeout.zip
+          curl -L "https://takeout.google.com/takeout/download?j=8ebe3836-7b53-4e23-b77c-6c2c7935d850&i=0&user=115269325274265252941&rapt=AEjHL4MHyDHGodSoJ6lKMOJR0ksPbCj4y4CD7TobBqD2wNRzMNbU6Q602wVy7Vneom9xuJbWXgRK6xMio6ogxFz07pomfO-h7enIBHrljYiZ8XBbCX58TUQ" -o takeout.zip
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
