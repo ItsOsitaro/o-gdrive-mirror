@@ -3,6 +3,9 @@ name: Download Takeout
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   download:
     runs-on: ubuntu-latest
@@ -14,7 +17,7 @@ jobs:
         run: |
           curl -L "https://takeout-download.usercontent.google.com/download/takeout-20260511T200120Z-3-001.zip?j=8ebe3836-7b53-4e23-b77c-6c2c7935d850&i=0&user=578995869144&authuser=0" -o takeout.zip
 
-      - name: Upload Release
+      - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
