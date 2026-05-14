@@ -1,0 +1,21 @@
+name: Mirror Takeout
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Takeout
+        run: |
+          curl -L "LINK_HERE" -o takeout.zip
+
+      - name: Upload Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          files: takeout.zip
