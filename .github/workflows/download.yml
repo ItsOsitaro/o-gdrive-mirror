@@ -13,11 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download file
+      - name: Create cookies file
         run: |
-          curl -L "https://takeout-download.usercontent.google.com/download/takeout-20260511T200120Z-3-001.zip?j=8ebe3836-7b53-4e23-b77c-6c2c7935d850&i=0&user=578995869144&authuser=0" -o takeout.zip
+          echo "${{ secrets.GOOGLE_COOKIES }}" > cookies.txt
 
-      - name: Create Release
+      - name: Download Takeout
+        run: |
+          curl -L \
+          -b cookies.txt \
+          "https://takeout-download.usercontent.google.com/download/takeout-20260511T200120Z-3-002.zip?j=8ebe3836-7b53-4e23-b77c-6c2c7935d850&i=1&user=578995869144&authuser=0" \
+          -o takeout.zip
+
+      - name: Upload Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
